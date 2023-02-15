@@ -24,21 +24,29 @@
             <p>{{ description }}</p>
             <a :href="link">More products like this.</a>
 
-            <p v-if="inventory > 10">In stock</p>
-            <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
-            <p v-else>Out of stock</p>
-            <p v-show="inStock">In Stock</p>
-            <span>On Sale</span>
+            <p v-if="inStock">In stock</p>
+            
+            <p 
+                v-else 
+                :class="{outOfStock: !inStock}" 
+            >
+            Out of stock
+            </p>
+
+            <span v-show="onSale"></span>
 
             <ul>
                 <li v-for="detail in details">{{ detail }}</li>
             </ul>
 
-            <div v-for="variant in variants" :key="variant.variantId">
-                <p @mouseover="updateProduct(variant.variantImage)">
-                    {{ variant.variantColor }}
-                </p>
-            </div>
+            <div
+            class="color-box"
+            v-for="(variant, index) in variants"
+            :key="variant.variantId"
+            :style="{ backgroundColor:variant.variantColor }"
+            @mouseover="updateProduct(index)"
+            ></div>
+
 
             <ul v-for="size in sizes">
                 <li>{{size}}</li>
@@ -48,8 +56,15 @@
                 <p>Cart({{ cart }})</p>
             </div>
 
-            <button v-on:click="addToCart">Add to cart</button>
-            <button v-on:click="removeCart">remove cart</button>
+            <button
+                v-on:click="addToCart"
+                :disabled="!inStock"
+                :class="{ disabledButton: !inStock }"
+            >
+                Add to cart
+            </button>
+            <button v-on:click="removeCart">Remove cart</button>
+
         </div>
  
     </div>
