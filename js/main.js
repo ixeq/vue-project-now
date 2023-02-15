@@ -37,9 +37,6 @@ Vue.component('product', {
             <li>{{size}}</li>
         </ul>
 
-        <div class="cart">
-            <p>Cart({{ cart }})</p>
-        </div>
 
         <button
             v-on:click="addToCart"
@@ -58,6 +55,7 @@ Vue.component('product', {
         
         return {
             product: "Socks",
+            brand: 'Vue Mastery',
             description: "A pair of warm, fuzzy socks.",
             selectedVariant: 0,
             altText: "A pair of socks",
