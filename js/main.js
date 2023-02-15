@@ -48,6 +48,9 @@ let app = new Vue({
         inStock() {
             return this.variants[this.selectedVariant].variantQuantity;
         },
+        sale() {
+            return this.product + ' ' + this.brand + ' ' + "Распродажа!";
+        },
      }
      
  })
