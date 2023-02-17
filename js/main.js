@@ -172,13 +172,21 @@ Vue.component('product-review', {
         <textarea id="review" v-model="review"></textarea>
     </p>
     <p>
+
         <label for="rating">Rating:</label>
-        <select id="rating" v-model.number="rating">
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
+    <div class="rating" >
+        <input type="radio" id="star-5" name="rating" value="5" v-model.number="rating">
+        <label for="star-5" ></label>	
+        <input type="radio" id="star-4" name="rating" value="4" v-model.number="rating">
+        <label for="star-4" ></label>    
+        <input type="radio" id="star-3" name="rating" value="3" v-model.number="rating">
+        <label for="star-3" ></label>  
+        <input type="radio" id="star-2" name="rating" value="2" v-model.number="rating">
+        <label for="star-2" ></label>    
+        <input type="radio" id="star-1" name="rating" value="1" v-model.number="rating">
+        <label for="star-1" ></label>
+    </div>
+        
         </select>
     </p>
     <p>
